@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
 import time
-df = pd.read_csv('D:\MISY\Homework\Assignment\\Cleaned_DS_Jobs.csv')
+df = pd.read_csv('Cleaned_DS_Jobs.csv')
 # Add up all required skills
 df["add_skills"] = df['python'] + df['excel'] + df['hadoop'] + df['spark'] + df['aws'] + df['tableau'] + df['big_data']
 
