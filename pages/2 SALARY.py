@@ -3,7 +3,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv("D:\MISY\Homework\Assignment\\Cleaned_DS_Jobs.csv")
+df = pd.read_csv("Cleaned_DS_Jobs.csv")
 df_1 = df
 df_2 = df_1[['max_salary', 'min_salary', 'avg_salary']]
 df_3 = df_1[['job_simp', 'max_salary', 'min_salary', 'avg_salary']]
