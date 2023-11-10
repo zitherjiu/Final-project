@@ -4,14 +4,16 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
 import time
+
+#Authors: Hengyi Zhang, Yangzi Lin
 df = pd.read_csv('Cleaned_DS_Jobs.csv')
 # Add up all required skills
 df["add_skills"] = df['python'] + df['excel'] + df['hadoop'] + df['spark'] + df['aws'] + df['tableau'] + df['big_data']
 
-# 设置网页标题
+# Set page title
 st.title('Analysis and Display of Data Science Job Information Based on Streamlit')
 
-# 展示一级标题
+# Show first-level titles
 st.header('3. Analysis of Factors Related to Ownership and Other Variables in Data Science ')
 
 def get_sizenum(x: str):
@@ -54,7 +56,7 @@ df_re1 = df_hot[['company_age','Size_num']]
 df_re1 = df_re1[df_re1['company_age']!= -1]
 df_re1.dropna(subset=['Size_num'], inplace=True)
 # distinct num and size
-
+#Authors: Hengyi Zhang, Ye Zhan
 df_skill = df[['job_simp','Type of ownership','python','excel','hadoop','spark','aws','tableau','big_data','add_skills']]
 df_skill1 = df_skill[['python','excel','hadoop','spark','aws','tableau','big_data']]
 
@@ -150,7 +152,7 @@ def draw_hot_age_size4():
     
     sns.despine()
     st.pyplot(plt)
-
+#Authors: Hengyi Zhang, Xinyi Huang
 def draw_size_age():
     plt.figure(figsize=(8, 6))
     sns.regplot(data=df_re1[(df_re1['company_age'] <= 50) & (df_re1['Size_num'] <= 2000)], x='company_age',
@@ -211,7 +213,7 @@ def draw_skill2():
     # Remove top and right borders
     sns.despine()
     st.pyplot(plt)
-
+#Authors: Hengyi Zhang, Xinyue Zhou
 def draw_skill3():
     python_counts = df_skill3.groupby('job_simp')['python'].sum()
     # Create a bar chart
@@ -267,7 +269,7 @@ draw_hot_ratingall()
 #st.image(img_url, caption='python')
 
 
-
+#Authors: Hengyi Zhang, Yujia Liao
 option = st.selectbox(":fire: Three aspects",['Rating VS age and size','age and size',"Skills"])
 
 if option =='Rating VS age and size':
@@ -276,23 +278,23 @@ if option =='Rating VS age and size':
     input_num = st.number_input("index",min_value=0,max_value=4)
     if input_num==1:
         st.text('The data source for this image is the part of the company with an age of 50 ') 
-        st.text('or less and a rating of 3 or more') # 添加
-        progress_bar = st.progress(25) # 创建进度条对象
+        st.text('or less and a rating of 3 or more') 
+        progress_bar = st.progress(25) # Create a progress bar object
         draw_hot_age_size1()
     if input_num == 2:
         st.text('The data source for this image is the part of the company with an age of 50 ')
-        st.text('or less and a rating of less than 3') # 添加
-        progress_bar = st.progress(50) # 创建进度条对象
+        st.text('or less and a rating of less than 3') 
+        progress_bar = st.progress(50) # Create a progress bar object
         draw_hot_age_size2()
     if input_num == 3:
         st.text("The data source for this image is the company's age greater than 50") 
-        st.text("and rating greater than or equal to 3") # 添加
-        progress_bar = st.progress(75) # 创建进度条对象
+        st.text("and rating greater than or equal to 3") 
+        progress_bar = st.progress(75) # Create a progress bar object
         draw_hot_age_size3()
     if input_num==4:
         st.text('The data source for this image is the part of the company that is older than 50')
-        st.text('and has a rating of less than 3') # 添加
-        progress_bar = st.progress(100) # 创建进度条对象
+        st.text('and has a rating of less than 3') 
+        progress_bar = st.progress(100) # Create a progress bar object
         draw_hot_age_size4()
 
     button_click = st.button(':sparkles: Remarks')
@@ -318,16 +320,16 @@ if option == 'age and size':
         st.write('...')
         
         
-
+#Authors: Hengyi Zhang, Yangzi Lin
 if option == 'Skills':
-    st.header(' Skills ') # 添加标题
+    st.header(' Skills ') # Add title
 
     st.write('We also noticed some data on skills. Since our major is information management, we are very interested in this.')
     draw_skill1()
     st.write(':point_right: From this pie chart, we can recognize that Python has the highest contribution to data jobs, even reaching almost one-third.This number is 10% more than the contribution of Excel, which ranks second.')
     draw_skill2()
-    draw_skill3()
     st.write(':point_up: From the two figures above, we understand the important position of Python in the entire data job. Now we are trying to gain a deeper understanding of the requirements for Python for various types of data jobs.')
+    draw_skill3()
     st.write(':point_right: As shown in this bar chart, data scientists have a huge demand for Python skills, far exceeding that of several other industries.')
     draw_skill4()
     st.write(":star: This pie chart once again proves the importance of Python in today's jobs" )
