@@ -40,16 +40,16 @@ df_hot1 = df_hot[df_hot['company_age'] != -1]
 # used in the second picture
 df_hot2 = df_hot1[['Rating', 'company_age', 'Size_num']]
 df_hot21 = df_hot2[df_hot2['company_age']<=50]
-df_hot21 = df_hot2[df_hot2['Rating']>=3]
+df_hot21 = df_hot21[df_hot21['Rating']>=3]
 # Used in the third picture
 df_hot22 = df_hot2[df_hot2['company_age']<=50]
-df_hot22 = df_hot2[df_hot2['Rating']<3]
+df_hot22 = df_hot22[df_hot22['Rating']<3]
 # four
 df_hot23 = df_hot2[df_hot2['company_age']>50]
-df_hot23 = df_hot2[df_hot2['Rating']>=3]
+df_hot23 = df_hot23[df_hot23['Rating']>=3]
 # five
 df_hot24 = df_hot2[df_hot2['company_age']>50]
-df_hot24 = df_hot2[df_hot2['Rating']<3]
+df_hot24 = df_hot24[df_hot24['Rating']<3]
 
 # Remove some irrelevant data
 df_re1 = df_hot[['company_age','Size_num']]
