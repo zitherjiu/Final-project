@@ -9,11 +9,12 @@ import requests
 
 
 
+#Authors: Hengyi Zhang, Yujia Liao
 df = pd.read_csv("Cleaned_DS_Jobs.csv")
 
 
 
-# 设置网页标题
+# Set page title
 st.title('Final Project:  Analysis based on dataset Data Science Job Posting on Glassdoor')
 
 col1, col2 = st.columns([2,1]) 
