@@ -155,7 +155,7 @@ def draw_combine3():
 
 
 #Authors: Hengyi Zhang, Ye Zhan
-option = st.selectbox(":fire: Three aspects ",['Job types','Company Types',"Combination"])
+option = st.selectbox(":fire: Three aspects ",['Job Types','Company Types',"Combination"])
 if option =='Job Types':
     st.header(" Here we show different Jobs' situation") # Add title
     draw_job()
