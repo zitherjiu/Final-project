@@ -3,6 +3,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+
+#Authors: Hengyi Zhang, Xinyi Huang
 df = pd.read_csv("Cleaned_DS_Jobs.csv")
 df_1 = df
 df_2 = df_1[['max_salary', 'min_salary', 'avg_salary']]
@@ -33,10 +35,10 @@ dfd = dfa[dfa['job_simp'] == 'data engineer']
 dfe = dfa[dfa['job_simp'] == 'manager']
 dff = dfa[dfa['job_simp'] == 'director']
 
-# 设置网页标题
+# Set page title
 st.title('Analysis and Display of Data Science Job Information Based on Streamlit')
 
-# 展示一级标题
+# Show first-level titles
 st.header('2. Analyze Salary and its Related Influencing Factors ')
 
 
@@ -44,7 +46,7 @@ st.header('2. Analyze Salary and its Related Influencing Factors ')
 import numpy as np
 def draw_fir_sala():
     statistics1 = df_6.describe()
-    # 提取最大值、最小值、均值和方差的数据
+    # Extract data of maximum, minimum, mean and variance
     max_values = statistics1['max_salary']['mean'].apply(lambda x: round(x, 1))
     min_values = statistics1['min_salary']['mean'].apply(lambda x: round(x, 1))
     mean_values = statistics1['avg_salary']['std'].apply(lambda x: round(x, 1))
@@ -52,19 +54,19 @@ def draw_fir_sala():
 
     plt.figure(figsize = (10,10))
 
-    # 创建柱形图
+    # Create a column chart
     fig, ax = plt.subplots(figsize = (10,9))
     x = range(len(df_6.groups))
     width = 0.3
 
-    # 绘制最大值的柱形图
+    # Plot a column chart of maximum values
     ax.bar(x, max_values, width, label='Max Salary')
-    # 绘制最小值的柱形图
+    # Plot a bar graph of minimum values
     ax.bar([i + width for i in x], min_values, width, label='Min Salary')
-    # 绘制均值的柱形图
+    # Plot a bar graph of the mean
     ax.bar([i + 2 * width for i in x], mean_values, width, label='Mean Salary std')
 
-    # 显示方差数值
+    # Show variance value
     # for i in range(len(df_4.groups)):
     #     ax.text(i, max_values[i] + 50, f'Var: {variance_values[i]:.2f}', ha='center')
     for i, v in enumerate(max_values):
@@ -73,27 +75,27 @@ def draw_fir_sala():
         ax.text(i + width, v, str(v), ha='center', va='bottom')
     for i, v in enumerate(mean_values):
         ax.text(i + 2 * width, v, str(v), ha='center', va='bottom')
-    # 设置横坐标标签
+    # Set abscissa label
     ax.set_xticks([i + width for i in x])
     ax.set_xticklabels(df_6.groups.keys(), rotation=0)
 
-    # 设置图例、标签等
+    # Set legends, labels, etc.
     ax.legend(loc='best')
     ax.set_xlabel('Type of Ownership')
     ax.set_ylabel('Salary')
-    ax.tick_params(axis='x', rotation=90)  # 设置 x 轴标签水平放置
+    ax.tick_params(axis='x', rotation=90)  # Set x-axis labels to be placed horizontally
     plt.ylim((0, 250))
 
-    # 展示柱形图
+    # Show column chart
     plt.tight_layout()
     st.pyplot(plt)
 
 
-
+#Authors: Hengyi Zhang, Xinyue Zhou
 
 def draw_sec_sala():
     statistics1 = df_4.describe()
-    # 提取最大值、最小值、均值和方差的数据
+    # Extract data of maximum, minimum, mean and variance
     max_values = statistics1['max_salary']['mean'].apply(lambda x: round(x, 1))
     min_values = statistics1['min_salary']['mean'].apply(lambda x: round(x, 1))
     mean_values = statistics1['avg_salary']['std'].apply(lambda x: round(x, 1))
@@ -101,19 +103,19 @@ def draw_sec_sala():
 
     plt.figure(figsize=(8, 9))
 
-    # 创建柱形图
+    # Create a column chart
     fig, ax = plt.subplots()
     x = range(len(df_4.groups))
     width = 0.3
 
-    # 绘制最大值的柱形图
+    # Plot a column chart of maximum values
     ax.bar(x, max_values, width, label='Max Salary')
-    # 绘制最小值的柱形图
+    # Plot a bar graph of minimum values
     ax.bar([i + width for i in x], min_values, width, label='Min Salary')
-    # 绘制均值的柱形图
+    # Plot a bar graph of the mean
     ax.bar([i + 2 * width for i in x], mean_values, width, label='Mean Salary std')
 
-    # 显示方差数值
+    # Show variance value
     # for i in range(len(df_4.groups)):
     #     ax.text(i, max_values[i] + 50, f'Var: {variance_values[i]:.2f}', ha='center')
     for i, v in enumerate(max_values):
@@ -122,18 +124,18 @@ def draw_sec_sala():
         ax.text(i + width, v, str(v), ha='center', va='bottom')
     for i, v in enumerate(mean_values):
         ax.text(i + 2 * width, v, str(v), ha='center', va='bottom')
-    # 设置横坐标标签
+    # Set abscissa label
     ax.set_xticks([i + width for i in x])
     ax.set_xticklabels(df_4.groups.keys(), rotation=0)
 
-    # 设置图例、标签等
+    # Set legends, labels, etc.
     ax.legend(loc='best')
     ax.set_xlabel('Job Simplification')
     ax.set_ylabel('Salary')
 
     plt.ylim((0, 200))
 
-    # 展示柱形图
+    # Show column chart
     plt.tight_layout()
     st.pyplot(plt)
 
@@ -152,7 +154,7 @@ def draw_hot_all():
 
 
 def draw_hot_sci():
-    # 用数据科学来进行分析
+    # Analyze with data science
     df_hot = dfb[
         ['Rating', 'min_salary', 'max_salary', 'avg_salary', 'same_state', 'company_age', 'Size_num', 'if_seniority']]
     k = 7
@@ -190,18 +192,19 @@ def draw_hot_engineer():
 
 
 
-
+#Authors: Hengyi Zhang, Yujia Liao
 st.subheader('(1) Two Bar Charts to See the Salary Situation')
-#st.write('这是探究工资的')
+#st.write('This is about salary')
 
 draw_fir_sala()
-st.write(":point_right: From this image, it is not difficult to see that from the perspective of the highest or lowest wage level, the overall salary level of the manager is the highest.But the manager's STD is also relatively highest. This indicates that the salary distribution of managers at different levels is relatively more dispersed, with significant numerical differences.On the contrary, the distribution of wage values for engineers in different levels is the most concentrated. This indicates that for engineers of different levels, the wage gap is relatively small.")
+st.write("This graph reflects the distribution of wage levels for different types of ownership. Obviously, the highest salary at Hospital is much higher than that of other types. Meanwhile, the highest salary values for other types of ownership are relatively similar. For the host type, the numerical difference between the highest and lowest salaries is also the largestFurthermore, the salary values of other organization and self employed are concentrated, with small deviations and relatively stable salary levels.")
+ 
 
 draw_sec_sala()
 
 on = st.toggle('Remarks')
 if on:
-    st.write('This graph reflects the distribution of wage levels for different types of ownership. Obviously, the highest salary at Hospital is much higher than that of other types. Meanwhile, the highest salary values for other types of ownership are relatively similar. For the host type, the numerical difference between the highest and lowest salaries is also the largestFurthermore, the salary values of other organization and self employed are concentrated, with small deviations and relatively stable salary levels. ')
+    st.write(":point_right: From this image, it is not difficult to see that from the perspective of the highest or lowest wage level, the overall salary level of the manager is the highest.But the manager's STD is also relatively highest. This indicates that the salary distribution of managers at different levels is relatively more dispersed, with significant numerical differences.On the contrary, the distribution of wage values for engineers in different levels is the most concentrated. This indicates that for engineers of different levels, the wage gap is relatively small." )
 
 
 st.subheader('(2) Two Heatmaps to Study the Correlation between Salary and Other Variables')
@@ -212,13 +215,13 @@ on = st.toggle('Some pity in cleaning the data')
 if on:
     st.write('At first, we hoped to find variables such as company age and whether they were in the same state to find a correlation between them and wages, but the heat map obtained showed that their correlation was weak. So we decided to find whether there were any correlation between different ownerships and salary.')
 
-#提出只有数量排名前4的公司的相关信息
+#Propose relevant information only for the top 4 companies in terms of quantity
 desired_ownership = ['Company - Private', 'Company - Public', 'Nonprofit Organization', 'Subsidiary or Business Segment']
 dfa = df[df['Type of ownership'].isin(desired_ownership)]
 
-#将4个公司分开
+#Separate 4 companies
 ownership_dummies = pd.get_dummies(dfa['Type of ownership'], prefix="for_", drop_first=False, dtype = int)
-#并在dfb右侧表尾
+#set up at the end of the table on the right side of dfb
 dfb = dfa.join(ownership_dummies)
 
 def get_sizenum(x: str):
@@ -255,4 +258,5 @@ st.pyplot(plt)
 on = st.toggle('Conclusion')
 if on:
     st.write('Since the number of data scientists is the highest among job types, we chose to conduct correlation analysis on this job type. We also used the same principle to select the four types of companies with the highest number. By plotting the heat map, we can find that the correlation between variables and average salaries has been significantly enhanced compared to the first processing method ')
-#st.write('从几个分散的热点图来看，可以从四个因素分析工资，age，rating，size，state')
+#st.write('From several scattered heat maps, wages can be analyzed from four factors，age，rating，size，state')
+
