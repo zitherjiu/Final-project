@@ -197,7 +197,7 @@ st.subheader('(1) Two Bar Charts to See the Salary Situation')
 #st.write('This is about salary')
 
 draw_fir_sala()
-st.write("This graph reflects the distribution of wage levels for different types of ownership. Obviously, the highest salary at Hospital is much higher than that of other types. Meanwhile, the highest salary values for other types of ownership are relatively similar. For the host type, the numerical difference between the highest and lowest salaries is also the largestFurthermore, the salary values of other organization and self employed are concentrated, with small deviations and relatively stable salary levels.")
+st.write("This graph reflects the distribution of wage levels for different types of ownership. Obviously, the highest salary at Hospital is much higher than that of other types. Meanwhile, the highest salary values for other types of ownership are relatively similar. For the Hospital, the numerical difference between the highest and lowest salaries is also the largest. Furthermore, the salary values of other organization and self employed are concentrated, with small deviations and relatively stable salary levels.")
  
 
 draw_sec_sala()
