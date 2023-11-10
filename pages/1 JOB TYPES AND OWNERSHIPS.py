@@ -7,7 +7,7 @@ import numpy as np
 
 
 
-df = pd.read_csv("D:\MISY\Homework\Assignment\\Cleaned_DS_Jobs.csv")
+df = pd.read_csv("Cleaned_DS_Jobs.csv")
 
 
 
